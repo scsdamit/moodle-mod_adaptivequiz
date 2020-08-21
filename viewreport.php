@@ -90,7 +90,7 @@ if (0 != $groupid) {
     $param['groupid'] = $groupid;
 }
 
-/* Retreive a list of attempts made by each user, displaying the sum of attempts and the highest score for each user */
+/* Retreive a list of attempts made by each user, displaying the sum of attempts and the highest score for each user dki_adaptivequiz_attempt*/
 $sql = "SELECT u.id, u.firstname, u.lastname, u.email, a.highestlevel, a.lowestlevel,
                (SELECT COUNT(*)
                   FROM {adaptivequiz_attempt} caa
@@ -135,7 +135,7 @@ $sql = "SELECT u.id, u.firstname, u.lastname, u.email, a.highestlevel, a.lowestl
         $groupjoin
          WHERE aa.instance = :instance
         $groupwhere
-      GROUP BY u.id, aa.instance, a.id, a.highestlevel, a.lowestlevel
+      GROUP BY aa.userid
         $orderby";
 $startfrom = $page * ADAPTIVEQUIZ_REC_PER_PAGE;
 
