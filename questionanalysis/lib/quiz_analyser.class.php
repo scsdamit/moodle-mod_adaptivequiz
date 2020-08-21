@@ -85,7 +85,8 @@ class adaptivequiz_quiz_analyser {
 
                 // Create a question-analyser for the question.
                 if (empty($this->questions[$question->id])) {
-                    $tags = tag_get_tags_array('question', $question->id);
+                    //$tags = tag_get_tags_array('question', $question->id);
+                    $tags = core_tag_tag::get_item_tags_array(null,'question', $question->id);
                     $difficulty = adaptivequiz_get_difficulty_from_tags($tags);
                     $this->questions[$question->id] = new adaptivequiz_question_analyser($quba->get_owning_context(), $question,
                         $difficulty, $adaptivequiz->lowestlevel, $adaptivequiz->highestlevel);
